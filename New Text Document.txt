@@ -1,0 +1,44 @@
+CREATE DATABASE gestion_ecole;
+
+USE gestion_ecole;
+
+-- Table Directeur
+CREATE TABLE Directeur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Table Surveillance
+CREATE TABLE Surveillance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Table Professeur
+CREATE TABLE Professeur (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    matiere VARCHAR(255) NOT NULL
+);
+
+-- Table Eleve
+CREATE TABLE Eleve (
+    code INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    note DECIMAL(5, 2) NOT NULL,
+    absence_hours INT NOT NULL
+);
+
+-- Table Group
+CREATE TABLE Groupe (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    code_eleve INT,
+    FOREIGN KEY (code_eleve) REFERENCES Eleve(code)
+);
